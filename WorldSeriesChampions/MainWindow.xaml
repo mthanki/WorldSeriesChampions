@@ -6,13 +6,32 @@
         xmlns:local="clr-namespace:WorldSeriesChampions"
         mc:Ignorable="d"
         Title="World Series Champions" Height="450" Width="800">
-    <Grid Background="#FF181818">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="15*"></ColumnDefinition>
             <ColumnDefinition Width="10*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="1" Margin="5" ItemsSource="{Binding Teams}"></ListBox>
+        <ListBox Grid.Column="1" SelectionChanged="TeamsList_SelectionChanged" Name="TeamsList" Margin="5" ItemsSource="{Binding Teams}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Label Tag="{Binding Id}" Content="{Binding Name}"></Label>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="2">
+            <DockPanel>
+                <Label Content="{Binding TeamName}"></Label>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="{Binding YearsWon}"></Label>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="{Binding TimesWon}"></Label>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Window>

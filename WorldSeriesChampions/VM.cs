@@ -26,38 +26,62 @@ namespace WorldSeriesChampions
 
         public ObservableCollection<Team> Teams { get; set; } = new ObservableCollection<Team>();
 
+        private string teamName;
+        public string TeamName
+        {
+            get { return teamName; }
+            set { teamName = value; propChanged(); }
+        }
+
+        private int timesWon;
+        public int TimesWon
+        {
+            get { return timesWon; }
+            set { timesWon = value; propChanged(); }
+        }
+
+        private string yearsWon;
+        public string YearsWon
+        {
+            get { return yearsWon; }
+            set { yearsWon = value; propChanged(); }
+        }
+
+
         public void init()
         {
             string[] TeamsList = File.ReadAllLines(TeamsFilePath);
             string[] SeriesWinners = File.ReadAllLines(SeriesWinnersFilePath);
-            
-            foreach(string teamName in TeamsList)
+
+            foreach (string teamName in TeamsList)
             {
                 Team t = new Team();
                 t.Name = teamName;
-
-                int totalWinners = SeriesWinners.Length;
+                t.Id = Teams.Count;
                 int i = 0;
-                for(int year = SERIES_FIRST_YEAR; year <= SERIES_LAST_YEAR; year++)
+                for (int year = SERIES_FIRST_YEAR; year <= SERIES_LAST_YEAR; year++)
                 {
-                    if (!SERIES_NOT_PLAYED_YEARS.Contains(year)){
+                    if (!SERIES_NOT_PLAYED_YEARS.Contains(year))
+                    {
                         if (SeriesWinners[i] == teamName)
                             t.WinningYears.Add(year);
-                    } else
-                    {
                         i++;
                     }
-                    i++;
                 }
-                if (t.WinningYears.Count > 0)
-                    return;
                 Teams.Add(t);
             }
         }
 
+        public void TeamSelected(int id)
+        {
+            TeamName = Teams[id].Name;
+            TimesWon = Teams[id].WinningYears.Count;
+            YearsWon = string.Join(", ",Teams[id].WinningYears);
+        }
+
         #region prop changed
         public event PropertyChangedEventHandler PropertyChanged;
-        private void propChange([CallerMemberName] string propertyName = "")
+        private void propChanged([CallerMemberName] string propertyName = "")
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         #endregion
     }

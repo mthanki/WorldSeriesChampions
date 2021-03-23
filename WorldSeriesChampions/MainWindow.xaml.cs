@@ -27,5 +27,11 @@ namespace WorldSeriesChampions
             DataContext = vm;
             vm.init();
         }
+
+        private void TeamsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox lb = sender as ListBox;
+            vm.TeamSelected(lb.SelectedIndex);
+        }
     }
 }
