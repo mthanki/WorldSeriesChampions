@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WorldSeriesChampions
 {
     class VM : INotifyPropertyChanged
     {
+        #region constants
         string TeamsFilePath =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), RESULT_FOLDER_NAME, TEAMS_FILE_NAME);
         string SeriesWinnersFilePath =
@@ -23,7 +21,8 @@ namespace WorldSeriesChampions
         const int SERIES_FIRST_YEAR = 1903;
         const int SERIES_LAST_YEAR = 2012;
         static readonly int[] SERIES_NOT_PLAYED_YEARS = { 1904, 1994 };
-
+        #endregion
+        #region properties
         public ObservableCollection<Team> Teams { get; set; } = new ObservableCollection<Team>();
 
         private string teamName;
@@ -46,8 +45,8 @@ namespace WorldSeriesChampions
             get { return yearsWon; }
             set { yearsWon = value; propChanged(); }
         }
-
-
+        #endregion
+        #region methods
         public void init()
         {
             string[] TeamsList = File.ReadAllLines(TeamsFilePath);
@@ -76,9 +75,9 @@ namespace WorldSeriesChampions
         {
             TeamName = Teams[id].Name;
             TimesWon = Teams[id].WinningYears.Count;
-            YearsWon = string.Join(", ",Teams[id].WinningYears);
+            YearsWon = string.Join(", ", Teams[id].WinningYears);
         }
-
+        #endregion
         #region prop changed
         public event PropertyChangedEventHandler PropertyChanged;
         private void propChanged([CallerMemberName] string propertyName = "")
