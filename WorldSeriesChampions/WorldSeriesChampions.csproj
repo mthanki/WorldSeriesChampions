@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Emoopo-Darktheme-Folder-Folder-Abstract-Blue-Smoke.ico</ApplicationIcon>
+    <ApplicationIcon>Martin-Berube-Sport-Baseball.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Emoopo-Darktheme-Folder-Folder-Abstract-Blue-Smoke.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Martin-Berube-Sport-Baseball.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

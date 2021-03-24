@@ -37,6 +37,5 @@
                 </Label>
             </DockPanel>
         </StackPanel>
-
     </Grid>
 </Window>
