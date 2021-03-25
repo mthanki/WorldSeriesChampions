@@ -17,15 +17,13 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
-                        <Label Foreground="#FF00AADE" Tag="{Binding Id}" Content="{Binding Name}"></Label>
+                        <Label Foreground="#FF00AADE" Content="{Binding Name}"></Label>
                     </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="2">
-            <DockPanel>
                 <Label Foreground="#FF00AADE" Content="{Binding TeamName}"></Label>
-            </DockPanel>
             <DockPanel>
                 <Label Content="Times Won" Foreground="#FF00AADE"></Label>
                 <Label Content="{Binding TimesWon}"></Label>

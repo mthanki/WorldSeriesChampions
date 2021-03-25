@@ -56,7 +56,7 @@ namespace WorldSeriesChampions
             {
                 Team t = new Team();
                 t.Name = teamName;
-                t.Id = Teams.Count;
+                //t.Id = Teams.Count;
                 int i = 0;
                 for (int year = SERIES_FIRST_YEAR; year <= SERIES_LAST_YEAR; year++)
                 {
@@ -71,11 +71,11 @@ namespace WorldSeriesChampions
             }
         }
 
-        public void TeamSelected(int id)
+        public void TeamSelected(int index)
         {
-            TeamName = Teams[id].Name;
-            TimesWon = Teams[id].WinningYears.Count;
-            YearsWon = string.Join(", ", Teams[id].WinningYears);
+            TeamName = Teams[index].Name;
+            TimesWon = Teams[index].WinningYears.Count;
+            YearsWon = string.Join(", ", Teams[index].WinningYears);
         }
         #endregion
         #region prop changed
